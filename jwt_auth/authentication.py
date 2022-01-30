@@ -7,11 +7,13 @@ User = get_user_model()
 
 class JWTAuthentication(BasicAuthentication):
     def authenticate(self, request):
+        #check for authorization header, if there isn't one none is returned.
         header = request.headers.get('Authorization')
         if not header:
             return None
         if header.startswith('Basic'): # Add this line in
             return None
+        #If there is a header, but it does not start with Bearer a PermissionDenied error is thrown
         if not header.startswith('Bearer'):
             raise PermissionDenied({'message': 'Invalid authorization header'})
         token = header.replace('Bearer ', '')

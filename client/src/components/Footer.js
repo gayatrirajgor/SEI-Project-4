@@ -1,8 +1,6 @@
 import React from 'react'
 import { Segment, Grid, List, Icon, Container, Header, Image } from 'semantic-ui-react'
 import 'animate.css'
-import Login from './Login'
-import Register from './Register'
 
 const Footer = () => {
 
@@ -23,8 +21,8 @@ const Footer = () => {
             <Grid.Column width={5} textAlign='center'>
               <Header inverted as='h3' content='SHOP NOW' />
               <List link inverted animated verticalAlign='middle' size={'medium'}>
-                <List.Item> <Register /></List.Item>
-                <List.Item> <Login /></List.Item>
+                <List.Item as='a' href='/login'>Login</List.Item>
+                <List.Item as='a' href='/register'>Register</List.Item>
                 <List.Item as='a' href='/browse'>Browse</List.Item>
               </List>
             </Grid.Column>

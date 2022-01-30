@@ -2,9 +2,6 @@ import React, { useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Container, Image, Menu, Icon, Dropdown } from 'semantic-ui-react'
 import { getPayload } from './helpers/auth'
-import Register from './Register'
-import Login from './Login'
-
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -27,7 +24,7 @@ const Navbar = () => {
     navigate('/')
   }
 
-  console.log('PAYLOAD', payload)
+  // console.log('PAYLOAD', payload)
 
   return (
     <Menu style={{ padding: '0px 50px' }} color='teal' secondary inverted size='large' id='nav'>
@@ -43,13 +40,13 @@ const Navbar = () => {
         
         {!userIsAuthenticated() ?
           <>
-            <Menu.Item as='a' position='right' fitted='horizontally'>
-              <Icon name='signup' size='large'/>
-              <Register />
+            <Menu.Item position='right' as='a' href='/login'>
+              <Icon name='sign-in' size='large'/>
+              Login
             </Menu.Item>
-            <Menu.Item as='a'>
-              <Icon name='user circle' size='large' /> 
-              <Login />
+            <Menu.Item as='a' href='/register'>
+              <Icon name='user circle' size='large'/>
+              Register
             </Menu.Item>
           </>
           :

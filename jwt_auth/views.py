@@ -1,9 +1,6 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.exceptions import PermissionDenied
 from django.contrib.auth import get_user_model
 from django.conf import settings
@@ -12,15 +9,17 @@ from datetime import timedelta, datetime
 from .serializers import UserSerializer
 User = get_user_model()
 
+# Create your views here.
 class RegisterView(APIView):
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'message': 'Registration successful'})
-
-        return Response(serializer.errors, status=422)
+            return Response({'message': 'Registration successful'}, status=status.HTTP_202_ACCEPTED)
+        
+        print(serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 class LoginView(APIView):
 

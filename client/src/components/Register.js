@@ -1,136 +1,177 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import { Modal, Button, Form, Header, Message, Icon } from 'semantic-ui-react'
+import { Button, Form, Header, Message, Icon, Grid } from 'semantic-ui-react'
 import axios from 'axios'
-import Login from './Login'
-
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+  const navigate = useNavigate()
   const [displayMessage, setMessage] = useState(false)
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
     password_confirmation: '',
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
   })
 
-  const [errors, setErrors] = useState({
-    username: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    firstName: '',
-    lastName: '',
-  })
-
-  const [open, setOpen] = useState(false)
-
+  const [errors, setErrors] = useState(false)
 
   const handleChange = (event) => {
-    console.log(event.target.value)
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log('Form Data ->', formData)
+    // console.log('Form Data ->', formData)
     try {
-      await axios.post('api/auth/register/', formData)
-      setOpen(false)
+      await axios.post('/api/auth/register/', formData)
+      setTimeout(() => {
+        navigate('/login')
+      }, 2000)
       setMessage(true)
+      console.log('Success')
     } catch (err) {
       console.log(err)
-      setErrors(err.response.data.errors)
+      setErrors(true)
       setMessage(false)
     }
   }
 
   return (
-    <div className="modal-wrapper">
-      <Modal
-        as={Form}
-        onSubmit={handleSubmit}
-        onClose={() => setOpen(false)}
-        onOpen={() => setOpen(true)}
-        open={open}
-        trigger={<p>Register</p>}
-        success
-      >
-        <Header as='h1'>Register</Header>
-        <Modal.Content style={{ backgroundColor: '#F6DFEB' }}>
 
-          <Form.Field required onChange={handleChange} value={formData.username}>
-            <label>Username</label>
-            <input name='username' placeholder='e.g. janesmith123' />
-          </Form.Field>
+    <Grid each style={{ height: '90vh', paddinBottom: '10px' }} verticalAlign='middle'>
+      <Grid.Row centered style={{ marginBottom: '70px', alignItems: 'center', justifyContent: 'space-around' }}>
+        <Grid.Column width={10} textAlign='center' style={{ maxWidth: 800, height: '40vh' }}>
+          <Header 
+            className='animate__animated animate__fadeInTopLeft animate__slow'
+            as='h1'
+            content='Register to TKG Fashion'
+            size='huge'
+          />
+          <br />
 
-          <Form.Field required onChange={handleChange} value={formData.email}>
-            <label>Email</label>
-            <input name='email' placeholder='e.g. jane@email.com' />
-          </Form.Field>
+          <Form onSubmit={handleSubmit} size='big' success error>
+            <Form.Group unstackable widths={2}>
+              <Form.Input 
+                label='Username' 
+                iconPosition='right' 
+                className='animate__animated animate__fadeInTopLeft animate__slow'
+              >  
+                <input
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  placeholder='Enter a username'
+                  required
+                />
+                <Icon name='user' />
+              </Form.Input>
 
-          <Form.Group widths={2}>
-            <Form.Field required onChange={handleChange} value={formData.password}>
-              <label>Password</label>
-              <input name='password' type='password' />
-            </Form.Field>
-            <Form.Field required onChange={handleChange} value={formData.password_confirmation}>
-              <label>Password Confirmation</label>
-              <input name='password_confirmation' type='password' />
-            </Form.Field>
-          </Form.Group>
+              <Form.Input 
+                label='Email' 
+                iconPosition='right' 
+                className='animate__animated animate__fadeInTopLeft animate__slow'
+              >
+                <input
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder='Enter your email'
+                  required
+                />
+                <Icon name='mail' />
+              </Form.Input>
+            </Form.Group>
 
-          <Form.Group widths={2}>
-            <Form.Field onChange={handleChange} value={formData.firstName}>
-              <label>First Name</label>
-              <input name='firstName' placeholder='e.g. Jane' />
-            </Form.Field>
+            <Form.Group widths={2}>
+              <Form.Input 
+                label='Password' 
+                iconPosition='right' 
+                className='animate__animated animate__fadeInBottomRight animate__slow'
+              >
+                <input
+                  name='password'
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder='Enter password'
+                  type='password'
+                  required
+                />
+                <Icon name='lock' />
+              </Form.Input>
 
-            <Form.Field onChange={handleChange} value={formData.lastName}>
-              <label>Last Name</label>
-              <input name='lastName' placeholder='e.g. Smith' />
-            </Form.Field>
-          </Form.Group>
+              <Form.Input
+                label='Re-Enter Password' 
+                iconPosition='right' 
+                className='animate__animated animate__fadeInBottomRight animate__slow'
+              >
+                <input
+                  name='password_confirmation'
+                  value={formData.password_confirmation}
+                  onChange={handleChange}
+                  placeholder='Enter password again'
+                  type='password'
+                  required
+                />
+                <Icon name='lock' />
+              </Form.Input>
+            </Form.Group>
 
-          {displayMessage ? (
-            <>
-              <Message
+            <Form.Group widths={2}>
+              <Form.Input 
+                label='First Name' 
+                iconPosition='right' 
+                className='animate__animated animate__fadeInBottomRight animate__slow'
+              >
+                <input
+                  name='first_name'
+                  value={formData.first_name}
+                  onChange={handleChange}
+                  placeholder='e.g. Jane'
+                />
+              </Form.Input>
+
+              <Form.Input
+                label='Last Name' 
+                iconPosition='right' 
+                className='animate__animated animate__fadeInBottomRight animate__slow'
+              >
+                <input
+                  name='last_name'
+                  value={formData.last_name}
+                  onChange={handleChange}
+                  placeholder='e.g. Smith'
+                />
+              </Form.Input>
+            </Form.Group>
+
+            <br/>
+            <Button
+              className='animate__animated animate__fadeInBottomRight animate__slow' 
+              size='big' 
+              color='teal' 
+              type='submit'
+            >
+              Click to Register!
+            </Button>
+            {displayMessage ? (
+              <Message 
                 success
-                header='Your user registration was successful'
-                content='You may now log-in with the username you have chosen'
+                header='Registration successful!'
+                content='You will now be directed to the login page.'
               />
-            </>
-          ) : (errors && <Message 
-            error
-            header='Action Forbidden'
-            content='Please check all fields have been entered correctly.'
-          />)
-          }
-          
-        </Modal.Content>
-        
-        <Modal.Actions>
-          <Button animated type="submit" color="red" onClick={() => setOpen(false)}>
-            <Button.Content visible>Close</Button.Content>
-            <Button.Content hidden>
-              <Icon name='close' />
-            </Button.Content>
-          </Button>
-          {/* <Button type="submit" color="teal" content='Register' icon='check'/> */}
-          <Button animated type="submit" color="teal">
-            <Button.Content visible>Register</Button.Content>
-            <Button.Content hidden>
-              <Icon name='check' />
-            </Button.Content>
-          </Button>
-        </Modal.Actions>
-        
-      </Modal>
-
-    </div>
+            ) : (errors && <Message 
+              error
+              header='Action Forbidden'
+              content='Please check all fields have been entered correctly.'
+            />)}
+            
+          </Form>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   )
 }
 
