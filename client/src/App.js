@@ -7,10 +7,10 @@ import Profile from './components/Profile'
 import ProductIndex from './components/ProductIndex'
 import ProductShow from './components/ProductShow'
 import Bag from './components/Bag'
-
+import Login from './components/Login'
+import Register from './components/Register'
 
 const App = () => {
-
 
   return (
     <BrowserRouter>
@@ -21,6 +21,8 @@ const App = () => {
         <Route exact path='/browse/:id' element={<ProductShow />} />
         <Route exact path='/browse' element={<ProductIndex />} />
         <Route path='/orders' element={<Bag />} />
+        <Route exact path='/login' element={<Login/>} />
+        <Route exact path='/register' element={<Register/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
