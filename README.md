@@ -238,8 +238,9 @@ The code snippet below indicates that if the user is not authenticated, simply t
   }
 </Comment.Group>
 ```
-<img width=“570” alt=“Screenshot 2022-01-31 at 12 26 22” src=“https://user-images.githubusercontent.com/59033443/151793761-d8ce855f-5d33-44bb-8060-7f0a273d918d.png”>
-<img width=“478” alt=“Screenshot 2022-01-31 at 12 29 10” src=“https://user-images.githubusercontent.com/59033443/151793985-2af27568-2573-4e46-a2be-0457b04fc41d.png”>
+
+<img width="570" alt="Screenshot 2022-01-31 at 12 26 22" src="https://user-images.githubusercontent.com/59033443/152825984-b056f53f-6ebb-4553-9d60-ae34ed85c58c.png">
+<img width="478" alt="Screenshot 2022-01-31 at 12 29 10" src="https://user-images.githubusercontent.com/59033443/152826041-847b525a-f1d8-4e5a-b3b4-f8679d662d2f.png">
 
 To transfer data from the form to the backend, the user’s data was first set to state. This part of the project became a little more difficult because the backend required a user id to be associated with the form, which had to be sent from the front end. To get the user id, I first developed a function that checked to see if the current user id signed in matched the user in the payload. Then, using the map function, I created a method called `getUsername` that returns the user’s id from an array of reviews. 
 ```js
