@@ -3,7 +3,7 @@ by [Gayatri](https://github.com/gayatrirajgor), [Kumar](https://github.com/Kumar
 
 ## Table of Contents
 |No. | Content                           | 
-|——|—————————————————|
+|----|-----------------------------------|
 |1   | [Project Overview](#overview)     |
 |2   | [Project Brief](#brief)           |  
 |3   | [Technologies Used](#tech)        | 
@@ -57,7 +57,7 @@ We agreed as a group to develop a clothes e-commerce website as it would be a gr
 Asana was used to plan our MVP and develop user stories for both the front and back ends. Tasks were then given to ensure that work was distributed equitably and that all requirements were met. Git and GitHub were utilised for version control, and continual communication was maintained during pushes and pulls to reduce and resolve any merge conflicts.
 
 |![Wireframe - Project 4 1](https://user-images.githubusercontent.com/59033443/151788417-7b3e8339-de8f-46b5-abc3-d3885445b55d.png)| ![Wireframe - Project 4 2](https://user-images.githubusercontent.com/59033443/151788482-81e5fc77-0ee4-48c5-a580-7ef093969813.png) |
-| ————————————————— | ————————————————— |
+| ---- | ---- |
 | ![Wireframe - Project 4 3](https://user-images.githubusercontent.com/59033443/151788611-860da8f2-4498-4a0f-a1fc-7efee54d263d.png) | ![Wireframe - Project 4 4](https://user-images.githubusercontent.com/59033443/151788647-2d17f314-f25b-4f89-a7d2-30d145bbfce8.png) | 
 | ![Wireframe - Project 4 5](https://user-images.githubusercontent.com/59033443/151788723-ebdbe560-8588-4fe4-947a-0caa06259f47.png) |![Wireframe - Project 4 6](https://user-images.githubusercontent.com/59033443/151788838-a449b4a8-b5b8-4967-a518-5cf800c18c5c.png)|
 | ![Wireframe - Project 4 7](https://user-images.githubusercontent.com/59033443/151788777-0c327173-be56-4af5-a079-017eb8acc8aa.png) |
