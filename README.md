@@ -21,7 +21,7 @@ TKG Fashion is a full-stack e-commerce app that allows customers to browse and b
 ## 2. Brief 📃
 * Build a full-stack application by making your front end and your back end
 * Consume your API with a separate front end built with React
-* Be a complete product which most likely means multiple relationships and CRUD functionality for at least a couple of models
+* Build a complete product which most likely means multiple relationships and CRUD functionality for at least a couple of models
 * Be deployed online
 
 <a name=“tech”></a>
